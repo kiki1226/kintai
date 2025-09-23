@@ -14,3 +14,5 @@ docker/mysql/*.pem
 docker/mysql/*key*.pem
 docker/mysql/*cert*.pem
 docker/mysql/*.ibd
+
+Coachtech-kintai/
