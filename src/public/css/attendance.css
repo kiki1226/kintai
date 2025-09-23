@@ -1,0 +1,211 @@
+/********メイン ********/
+.wrap {
+    background-color: #F0EFF2;
+    padding: 100px 90px 200px;
+}
+
+.card {
+    width: 900px;
+    background-color: #F0EFF2;
+    margin: 0 auto;
+}
+
+/******** コンテナ *******/
+.att-index {
+    margin: 0 auto;
+    background: #F0EFF2;
+}
+
+.alert-success {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 40px;
+}
+
+.alert-space {
+    background-color: #000;
+    height: 40px;
+    width: 0;
+    border-left: 8px solid #000;
+}
+
+.att-index__title {
+    font-size: 30px;
+    font-weight: 700;
+    width: 700px;
+}
+/******** 月移動ナビ *******/
+.att-index__monthnav {
+    width: 900px;
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 260px;
+    margin: 30px 0 46px;
+    border-radius: 12px;
+}
+
+.att-index__month {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    padding: 15px 0px 15px;
+    font-size: 25px;
+}
+
+.att-index__month img {
+    height: 25px;
+    width: 25px;
+
+}
+
+/******* ボタン *******/
+.btn-ghost {
+    background: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #737373;
+    font-size: 20px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: 0.15em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+.btn-ghost img {
+    height: 15px;
+    width: 20px;
+    opacity: 0.3;
+}
+
+.btn-ghost-img {
+    height: 15px;
+    width: 20px;
+    transform: scaleX(-1);
+    display: inline-block;
+    vertical-align: middle;
+    opacity: 0.3;
+}
+
+.btn-ghost:hover {
+    background: #fafafa;
+}
+
+/********* テーブル ********/
+.att-index a {
+    text-decoration: none;
+}
+
+
+.att-index__tablewrap {
+    width: 900px;
+    background: #fff;
+    border: 1px solid #eef0f5;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(17, 24, 39, .04);
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0.15em;
+}
+
+.att-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.att-table thead th {
+    background: #FFFFFF;
+    color: #737373;
+    font-weight: 700;
+    padding: 12px 10px;
+    font-size: 16px;
+    border-bottom: 3px solid #E1E1E1;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.15em;
+    line-height: 100%;
+
+}
+
+.att-table tbody td {
+    text-align: center;
+    padding: 12px 8px;
+    font-size: 16px;
+    font-weight: 700;
+    border-bottom: 2px solid #E1E1E1;
+    color: #737373;
+    background-color: #FFFFFF;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.15em;
+    line-height: 100%;
+    
+}
+.att-table tr,
+.att-table th {
+    font-family: 'Inter', sans-serif;
+    height: 40px;
+    padding: 10px;
+    text-align: center;
+}
+
+
+.cell-date {
+    font-variant-numeric: tabular-nums;
+}
+
+.cell-more .link-more {
+    color: #111827;
+    text-decoration: none;
+    border: 1px solid #e5e7eb;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+.cell-more .link-more:hover {
+    background: #f3f4f6;
+}
+
+.muted {
+    color: #9ca3af;
+}
+.text-muted {
+    color: #000;
+}
+
+/* 祝日/週末で空白の行は淡く */
+.is-off td {
+    background: #f7f7f9;
+    color: #a0a3aa;
+}
+
+.is-off a {
+    pointer-events: none;
+    color: #c4c6cc;
+    text-decoration: none;
+}
+
+td.empty {
+    height: 40px;
+}
+
+.badge-holiday {
+    display: inline-block;
+    margin-left: .3rem;
+    padding: .05rem .35rem;
+    font-size: .75rem;
+    border-radius: .35rem;
+    background: #ffe8ea;
+    color: #c33;
+}
+

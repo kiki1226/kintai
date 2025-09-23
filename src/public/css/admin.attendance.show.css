@@ -1,0 +1,261 @@
+/* ========== Page Wrapper ========== */
+.wrap {
+    background-color: #F0EFF2;
+    padding: 100px 90px 200px;
+    /* 一般用に合わせた */
+}
+
+.card {
+    width: 900px;
+    background-color: #F0EFF2;
+    margin: 0 auto;
+}
+
+/* ========== Page Title ========== 
+admin.css記入
+*/
+
+/* ========== Page Table ========== */
+.show-card {
+    padding: 0;
+}
+
+.show-card form {
+    background: #fff;
+    border: 1px solid #eef0f5;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(17, 24, 39, .04);
+    /* 一般用に揃え */
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    gap: 140px;
+    /* 一般用に寄せた */
+    padding: 20px 0;
+    border-bottom: 2px solid #E1E1E1;
+    /* 一般用に揃え */
+}
+
+.row h6 {
+    display: flex;
+    align-items: center;
+    color: #666;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.15em;
+}
+
+/* 行のレイアウトを崩さず、エラーは入力の下に */
+
+.show .row>h6 {
+    width: 110px;
+    margin: 0;
+    padding-top: 8px;
+    font-weight: 700;
+    margin-left: 70px;
+}
+
+.show .field {
+    flex: 1;
+    min-width: 260px;
+}
+
+.show .pair {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.show .time {
+    height: 38px;
+}
+
+.show .tilde {
+    opacity: .6;
+}
+/* ========== Page Table Contents ========== */
+.chip {
+    display: inline-block;
+    background: #f7f7f8;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 10px 14px;
+}
+.chip-name,
+.value {
+    font-size: 16px;
+    font-weight: 700;
+    color: #000000;
+    font-family: 'Inter', sans-serif;
+    line-height: 100%;
+    letter-spacing: 0.15em;
+    margin: 5px 10px;
+}
+
+.chip-year {
+    display: flex;
+    gap: 130px;
+    align-items: baseline;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.15em;
+    margin-left: 10px;
+}
+
+/* 入力 */
+.time,
+.note {
+    border: 1px solid #ccc;
+    /* 一般用に寄せ */
+    border-radius: 4px;
+    padding: 6px 8px;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+}
+
+/* 備考 */
+.note {
+    width: 450px;
+    min-height: 60px;
+    white-space: pre-wrap;
+    font-size: 16px;
+    font-weight: 700;
+    color: #000;
+    font-family: 'Inter', sans-serif;
+    line-height: 100%;
+    letter-spacing: 0.15em;
+}
+
+.time {
+    width: 120px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 16px;
+    text-align: center;
+
+}
+
+.tilde {
+    color: #9ca3af;
+}
+
+.note {
+    width: 316px;
+    height: 72px;
+    resize: none;
+    border: 1px solid #D9D9D9;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 16px;
+}
+/* ========== 編集ボタン ========== */
+.actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: 8px;
+}
+
+.btn-primary {
+    width: 130px;
+    height: 50px;
+    font-size: 20px;
+    margin-top: 40px;
+    background: #111;
+    color: #fff;
+    border-color: #111;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 22px;
+    text-decoration: none;
+    letter-spacing: 0.15em;
+}
+
+/* 打刻入力欄（一般用に揃える） */
+
+
+.time-input {
+    width: 103px;
+    height: 29px;
+    border: 1px solid #E1E1E1;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+}
+
+.time-separator {
+    width: 100px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    color: #000;
+}
+
+/* Chrome / Safari の time input 時計アイコンを非表示 */
+input[type="time"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
+/* Firefox の time input スピンボタンも非表示 */
+input[type="time"]::-moz-focus-inner {
+    border: 0;
+}
+
+input[type="time"]::-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
+}
+
+input[type="time"]:not(:focus):placeholder-shown {
+    color: transparent;
+}
+
+/*******エラーメッセージ*********/
+.error {
+    color: red;
+    font-size: 18px;
+    margin-top: 4px;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    border: 1px solid #f5c2c7;
+    color: #842029;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+
+/* エラー表示 */
+.show .errors {
+    margin-top: 6px;
+}
+
+.show .error {
+    color: #d32f2f;
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 2px 0 0;
+}
+
+/* 備考テキストエリアの下にも同じ見た目を適用 */
+.show textarea.note+.error {
+    margin-top: 6px;
+}
+
+
+
