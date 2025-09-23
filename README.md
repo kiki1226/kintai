@@ -56,50 +56,70 @@
 
 ```mermaid
 erDiagram
-  USERS ||--o{ ATTENDANCES : has
-  ATTENDANCES ||--o{ ATTENDANCE_BREAKS : has
-  WORK_RULES ||--o{ USERS : applies_to
-  HOLIDAYS ||--o{ ATTENDANCES : affects
-
   USERS {
-    bigint  id PK
-    varchar name
-    varchar email
-    varchar password
-    varchar role
-    varchar zipcode
-    varchar address
-    varchar building
-    varchar avatar
+    BIGINT  id PK
+    BIGINT  department_id FK
+    VARCHAR name
+    VARCHAR email
+    VARCHAR password
+    VARCHAR role
+    VARCHAR zipcode
+    VARCHAR address
+    VARCHAR building
+    VARCHAR avatar
   }
 
-  ATTENDANCES {
-    bigint   id PK
-    bigint   user_id FK
-    datetime work_date  "00:00固定"
-    datetime clock_in_at
-    datetime clock_out_at
-    text     note
-  }
-
-  ATTENDANCE_BREAKS {
-    bigint   id PK
-    bigint   attendance_id FK
-    datetime start_time
-    datetime end_time
-  }
-
-  HOLIDAYS {
-    bigint id PK
-    date   holiday_date
-    varchar name
+  DEPARTMENTS {
+    BIGINT  id PK
+    VARCHAR name
   }
 
   WORK_RULES {
-    bigint id PK
-    varchar rule_name
-    time   start_time
-    time   end_time
+    BIGINT  id PK
+    VARCHAR rule_name
+    TIME    start_time
+    TIME    end_time
   }
 
+  HOLIDAYS {
+    BIGINT  id PK
+    DATE    holiday_date
+    VARCHAR name
+  }
+
+  ATTENDANCES {
+    BIGINT   id PK
+    BIGINT   user_id FK
+    DATE     work_date
+    DATETIME clock_in_at
+    DATETIME clock_out_at
+    TEXT     note
+  }
+
+  ATTENDANCE_BREAKS {
+    BIGINT   id PK
+    BIGINT   attendance_id FK
+    DATETIME start_time
+    DATETIME end_time
+  }
+
+  REQUESTS {
+    BIGINT   id PK
+    BIGINT   user_id FK
+    BIGINT   attendance_id FK
+    VARCHAR  type        
+    DATETIME from_value  
+    DATETIME to_value      
+    TEXT     reason
+    VARCHAR  status      
+    BIGINT   reviewed_by    
+    DATETIME reviewed_at    
+  }
+
+  DEPARTMENTS     ||--o{ USERS              : has
+  WORK_RULES      ||--o{ USERS              : applies_to
+  USERS           ||--o{ ATTENDANCES        : has
+  ATTENDANCES     ||--o{ ATTENDANCE_BREAKS  : has
+  USERS           ||--o{ REQUESTS           : submits
+  ATTENDANCES     ||--o{ REQUESTS           : targets
 ```
