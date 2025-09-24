@@ -15,6 +15,60 @@
     height: 500px;
 }
 
+/* ==========テーブル========== */
+th {
+    width: 300px;
+    padding-left: 70px;
+}
+td {
+    padding-left: 70px;
+    color: #000;
+}
+
+.chip-name,
+.chip-year {
+    display: inline-flex;
+    align-items: center;
+    gap: 100px;
+    border-radius: 9999px;
+    background: #f5f5f7;
+    /* 既存のトーンに合わせて薄グレー */
+    font-weight: 600;
+}
+
+.chip-year .year {
+    margin-right: .1rem;
+}
+
+.tilde {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.bikou {
+    justify-content: left;
+}
+
+.card .table td {
+    text-align: left !important;
+}
+
+/* 万一 .text-center が付いている<td>があっても左寄せにする */
+.card .table td.text-center {
+    text-align: left !important;
+}
+
+/* 申請詳細：項目名（左列）を左寄せ */
+.card .table th {
+    text-align: left !important;
+}
+
+/* 万一 .text-center / .text-right が付いていても上書き */
+.card .table th.text-center,
+.card .table th.text-right {
+    text-align: left !important;
+}
+
 /* ==========ボタン========== */
 .button {
     margin: 10px 0 16px 0;
@@ -25,12 +79,6 @@
     justify-content: space-between;
 }
 
-.button-1{
-    margin: 10px 0 16px 0;
-    display: flex;
-    gap: 50px;
-}
-
 .btn {
     align-items: center;
     gap: 6px;
@@ -39,14 +87,18 @@
 
 .btn-dark {
     width: 130px;
-    height: 60px;
-    font-size: 20px;
+    height: 50px;
+    font-size: 22px;
     background: #111;
     color: #fff;
     border-color: #111;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: 0.15em;
 }
 
-.btn-danger{
+.btn-danger {
     width: 130px;
     height: 60px;
     font-size: 20px;
@@ -55,7 +107,7 @@
     border-color: #504e4e;
 }
 
-.btn-outline-secondary{
+.btn-outline-secondary {
     font-size: 20px;
     color: #04e7f7;
     text-decoration: underline;
@@ -65,7 +117,7 @@
     align-items: center;
 }
 
-.btn-secondary{
+.btn-secondary {
     width: 130px;
     height: 60px;
     font-size: 20px;
@@ -76,7 +128,8 @@
     padding-left: 25px;
     padding-top: 15px;
 }
-.btn-zumi{
+
+.btn-zumi {
     width: 130px;
     height: 60px;
     font-size: 20px;
@@ -87,16 +140,8 @@
     padding-left: 25px;
     padding-top: 15px;
 }
+
 .button from {
     justify-content: space-between;
     gap: 30px;
-}
-
-/* ==========テーブル========== */
-th {
-    width: 300px;
-}
-.time-view {
-    margin-right: 100px;
-    margin-left: 100px;
 }

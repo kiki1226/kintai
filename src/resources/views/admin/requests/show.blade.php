@@ -25,16 +25,33 @@
       $b2s = $fmt(optional($a)->break2_started_at ?? null);
       $b2e = $fmt(optional($a)->break2_ended_at ?? null);
       $note = $a->note ?? ($r->reason ?? '');
+      $user   = $r->user ?? null;
+      $target = $r->target_date ?: ($a?->work_date ?? null);
+      if ($target && !($target instanceof \Carbon\CarbonInterface)) {
+          $target = \Carbon\Carbon::parse($target, config('app.timezone','Asia/Tokyo'));
+      }
     @endphp
     <table class="table">
       <tbody>
         <tr>
           <th>名前</th>
-          <td>{{ $r->user->name ?? '' }}</td>
+          <td>
+            <div class="chip-name">{{ $user->name ?? '' }}</div>
+          </td>
         </tr>
+
         <tr>
           <th>日付</th>
-          <td>{{ $ymd }}</td>
+          <td>
+            @if($target)
+              <div class="chip-year">
+                <div class="year">{{ $target->format('Y年') }}</div>
+                <div class="day">{{ $target->format('n月j日') }}</div>
+              </div>
+            @else
+              {{-- 日付が未特定の場合は空表示のまま --}}
+            @endif
+          </td>
         </tr>
         <tr>
           <th>出勤・退勤</th>
@@ -44,25 +61,24 @@
             <span class="time-view">{{ $out }}</span>
           </td>
         </tr>
-        <tr>
-          <th>休憩</th>
-          <td>
-            <span class="time-view">{{ $b1s }}</span>
-            <span class="tilde">〜</span>
-            <span class="time-view">{{ $b1e }}</span>
-          </td>
-        </tr>
-        <tr>
-          <th>休憩２</th>
-          <td>
-            <span class="time-view">{{ $b2s }}</span>
-            <span class="tilde">〜</span>
-            <span class="time-view">{{ $b2e }}</span>
-          </td>
-        </tr>
+        {{-- 休憩（本数ぶん表示） --}}
+          @foreach(($breakPairs ?? []) as $i => $p)
+            <tr>
+              <th>{{ $i === 0 ? '休憩' : '休憩'.($i+1) }}</th>
+              <td>
+                @php $s = $p['start'] ?? ''; $e = $p['end'] ?? ''; @endphp
+                <span class="time-view">{{ $s }}</span>
+                @if($s && $e)
+                  <span class="tilde">〜</span>
+                @endif
+                <span class="time-view">{{ $e }}</span>
+              </td>
+            </tr>
+          @endforeach
+
         <tr>
           <th>備考</th>
-          <td>{{ $note }}</td>
+          <td class="bikou">{{ $note }}</td>
         </tr>
       </tbody>
     </table>

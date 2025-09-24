@@ -60,21 +60,40 @@ class AdminRequestController extends Controller
 
         return view('admin.requests.index', compact('requests', 'tab', 'typeLabels'));
     }
-    
-    /** 申請詳細 */
-    public function show(AttendanceRequest $request)   // ← モデルは $request（ルート {request} と一致）
-    {
-        $typeLabels = [
-            'attendance_correction' => '勤怠修正',
-            'leave'                 => '休暇',
-            'overtime'              => '残業',
-        ];
 
-        $request->load(['user', 'attendance']);
+    /** 申請詳細 */
+    public function show(AttendanceRequest $request)
+    {
+        $tz = config('app.timezone', 'Asia/Tokyo');
+
+        $request->load(['user', 'attendance.breaks']);
+        $att = $request->attendance;
+
+        $srcBreaks = collect(data_get($request->changes, 'breaks', []));
+        if ($srcBreaks->isEmpty() && $att) {
+            $srcBreaks = collect($att->breaks)->map(fn($b) => [
+                'start_time' => $b->start_time,
+                'end_time'   => $b->end_time,
+            ]);
+        }
+
+        // 既存の整形は Collection で保持
+        $breakPairs = $srcBreaks->map(function ($b) use ($tz) {
+            $sRaw = data_get($b, 'start_time') ?? data_get($b, 'start');
+            $eRaw = data_get($b, 'end_time')   ?? data_get($b, 'end');
+            return [
+                'start' => $sRaw ? \Carbon\Carbon::parse($sRaw, $tz)->format('H:i') : '',
+                'end'   => $eRaw ? \Carbon\Carbon::parse($eRaw, $tz)->format('H:i') : '',
+            ];
+        });
+
+        // ★ 予備の空欄を常に最後に1本追加
+        $breakPairs = $breakPairs->push(['start' => '', 'end' => ''])->values()->all();
 
         return view('admin.requests.show', [
             'r' => $request,
-            'a' => $request->attendance,
+            'a' => $att,
+            'breakPairs' => $breakPairs,
         ]);
     }
 
