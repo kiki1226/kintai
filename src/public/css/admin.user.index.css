@@ -52,3 +52,33 @@ admin.css記入
     padding: 15px;
     text-decoration: none;
 }
+
+/* ===== Pagination（$users->links()）の巨大SVG対策：このページだけ ===== */
+nav[aria-label="Pagination Navigation"] svg {
+    width: 16px !important;
+    height: 16px !important;
+    max-width: 16px !important;
+    max-height: 16px !important;
+    flex: 0 0 auto !important;
+}
+
+
+
+nav[aria-label="Pagination Navigation"] a,
+nav[aria-label="Pagination Navigation"] span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    line-height: 1;
+}
+
+/* ===== 不要な「Showing...」を消す ===== */
+nav[aria-label="Pagination Navigation"] p {
+    display: none !important;
+}
+
+/* ===== 余計に出てる「< >」だけの行を消す =====
+   もし < > が "a 2個だけ" のブロックなら消える */
+nav[aria-label="Pagination Navigation"]>div:first-child {
+    display: none !important;
+}

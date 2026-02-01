@@ -51,11 +51,11 @@ header {
     display: block;
 }
 
-nav a {
+header .nav a {
     color: #fff;
     text-decoration: none;
     margin-right: 18px;
-    opacity: .9
+    opacity: .9;
 }
 
 nav a:hover {
